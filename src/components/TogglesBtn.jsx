@@ -1,42 +1,34 @@
 import React, { useState } from "react";
 
 const TogglesBtn = ({ toggleStatus, setToggleStatus }) => {
+  const btns = ["All", "Pending", "Submitted", "Reviewed"];
+
   return (
     <div className="space-x-5 my-4 flex justify-end">
-      <button
-        onClick={() => setToggleStatus("All")}
-        className={`btn btn-primary ${
-          toggleStatus === "All" && "bg-secondary"
-        }`}
-      >
-        All
-      </button>
-      <button
-        onClick={() => setToggleStatus("Pending")}
-        className={`btn btn-primary ${
-          toggleStatus === "Pending" && "bg-secondary"
-        }`}
-      >
-        Pending
-      </button>
-      <button
-        onClick={() => setToggleStatus("Submitted")}
-        className={`btn btn-primary ${
-          toggleStatus === "Submitted" && "bg-secondary"
-        }`}
-      >
-        Submitted
-      </button>
-      <button
-        onClick={() => setToggleStatus("Reviewed")}
-        className={`btn btn-primary ${
-          toggleStatus === "Reviewed" && "bg-secondary"
-        }`}
-      >
-        Reviewed
-      </button>
+      {btns.map((btn, index) => {
+        return (
+          <button
+            className={`btn btn-secondary ${
+              toggleStatus === btn && "bg-primary"
+            }`}
+            onClick={() => setToggleStatus(btn)}
+            key={index}
+          >
+            {btn}
+          </button>
+        );
+      })}
     </div>
   );
 };
 
+//  <button
+//             key={idx}
+//             onClick={() => setToggleStatus(btn)}
+//             className={`btn btn-primary ${
+//               toggleStatus == btn && "bg-secondary"
+//             }`}
+//           >
+//             {btn}
+//           </button>
 export default TogglesBtn;
